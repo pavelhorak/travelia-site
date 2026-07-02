@@ -1,0 +1,52 @@
+{
+  "version": 2,
+  "_comment": "Travelia Index — tunable knobs (edit + redeploy, no data re-bake). Index = 100 * Safety * Fit^wFit * Value^wValue * Reach^wReach. See docs/SCORING.md.",
+  "_sliders_doc": "MIDDLE-IS-OFF: each slider is a 0..4 notch, centre (2) = off (no weight/no filter). tune() in score.ts reads the per-notch arrays below at the traveller's notch. Budget & Distance are asymmetric — only the thrifty/near half re-weights (no luxury-quality signal yet, and distance is already priced in the all-in cost so 'far' just stays off). Temp & Safety are two-sided. Profiles are named notch presets; moving any slider switches to Custom.",
+
+  "weights": { "fit": 1.0, "quality": 0.5 },
+  "hideBelow": 12,
+  "value":   { "floor": 0.05 },
+  "comfort": { "dryRainMm": 200 },
+
+  "_tripQuality_doc": "Experience trips rank by a continuous 0..1 quality column (index_quality.arrow) instead of a binary tag filter — so no place is ever wrongly invisible (Karlovy Vary on the culture map). Physical trips (beach/ski/diving) are absent here: they keep their real geo+climate gate and get quality = 1.",
+  "tripQuality": { "culture": "culture", "city": "urban", "nightlife": "nightlife", "nature": "nature", "hiking": "nature" },
+
+  "sliders": {
+    "budget":   { "label": "Budget", "ends": ["thrifty", "luxury"],
+                  "wValue": [0.35, 0.18, 0.0, 0.0, 0.0], "gamma": [1.0, 0.9, 0.8, 0.8, 0.8] },
+    "distance": { "label": "Travel time", "ends": ["near", "far"],
+                  "wReach": [0.45, 0.22, 0.0, 0.0, 0.0], "decayKm": [2000, 3200, 9000, 9000, 9000] },
+    "temp":     { "label": "Temperature", "ends": ["mild", "extreme"],
+                  "warmSpan": [4, 6, 8, 12, 16] },
+    "fun":      { "label": "Vibe", "ends": ["laid-back", "lively"],
+                  "funLive": [0.0, 0.0, 0.0, 0.3, 0.6], "funQuiet": [0.6, 0.3, 0.0, 0.0, 0.0] },
+    "safety":   { "label": "Safety", "ends": ["only safe", "adventurous"],
+                  "divisor": [4, 6, 8, 10, 12], "floor": [0.0, 0.15, 0.3, 0.35, 0.4], "hideAdvisory": [2, 3, 4, 99, 99],
+                  "salExp": [0.15, 0.15, 0.15, 0.08, 0.0] }
+  },
+
+  "profiles": {
+    "easygoing": { "label": "Easygoing (first-timer / elderly)", "notch": { "budget": 2, "distance": 1, "temp": 0, "safety": 1 } },
+    "couple":    { "label": "Couple / balanced", "default": true, "notch": { "budget": 2, "distance": 2, "temp": 2, "safety": 2 } },
+    "adventure": { "label": "Adventure", "notch": { "budget": 1, "distance": 2, "temp": 3, "safety": 4 } }
+  },
+
+  "trips": {
+    "beach":     { "gate": { "kind": "soft", "air": [12, 20], "rainKill": 260 },
+                   "comfort": { "warm": 0.45, "sun": 0.30, "sea": 0.25 }, "ideal": [24, 31], "sea": [15, 27] },
+    "diving":    { "gate": { "kind": "sea", "sea": [18, 24] },
+                   "comfort": { "sea": 0.50, "warm": 0.20, "sun": 0.30 }, "ideal": [26, 32], "sea": [22, 30] },
+    "ski":       { "gate": { "kind": "snow", "snow": [0.18, 0.45] },
+                   "comfort": { "snow": 0.60, "sun": 0.40 }, "ideal": [-6, 2] },
+    "hiking":    { "gate": { "kind": "temperate", "hot": 32, "cold": -5, "rainKill": 300 },
+                   "comfort": { "warm": 0.50, "dry": 0.30, "sun": 0.20 }, "ideal": [14, 23] },
+    "nature":    { "gate": { "kind": "temperate", "hot": 34, "cold": -8, "rainKill": 320 },
+                   "comfort": { "warm": 0.50, "dry": 0.30, "sun": 0.20 }, "ideal": [12, 24] },
+    "city":      { "gate": { "kind": "none" },
+                   "comfort": { "warm": 0.60, "dry": 0.40 }, "ideal": [12, 24] },
+    "culture":   { "gate": { "kind": "none" },
+                   "comfort": { "warm": 0.60, "dry": 0.40 }, "ideal": [12, 24] },
+    "nightlife": { "gate": { "kind": "none" },
+                   "comfort": { "warm": 0.50, "dry": 0.30, "sun": 0.20 }, "ideal": [16, 28] }
+  }
+}
