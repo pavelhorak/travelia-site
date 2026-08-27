@@ -1,0 +1,102 @@
+TRAVELIA — TERMS OF USE & LICENSE
+© 2026 Pavel Horak. All rights reserved.
+
+Travelia (the "Site") — the website at travelia.net, its source code, its
+design, and the compiled destination dataset it serves (the "Data") — is a
+free service provided by Pavel Horak (the "Author"). It is free to USE. It is
+NOT free to COPY, HOST, or REDISTRIBUTE.
+
+
+1. WHAT YOU MAY DO
+
+   - Use the Site for your own personal, non-commercial trip planning.
+   - Link to travelia.net.
+   - Quote small excerpts with attribution and a link back to travelia.net.
+
+
+2. WHAT YOU MAY NOT DO
+
+   Without the Author's prior written permission, you may not:
+
+   - Copy, mirror, rehost, republish, or redeploy the Site or any substantial
+     part of it, on any domain or platform, whether or not modified, and
+     whether or not for profit.
+   - Extract, scrape, download in bulk, or reuse a substantial part of the
+     Data — including the served .arrow / .json / tile artifacts — or build a
+     competing or derivative product or dataset from them.
+   - Remove, obscure, or alter this notice, the on-map attribution, or any
+     copyright, credit, or source line.
+   - Hotlink the Site's data or tile files from another site or application.
+
+   These restrictions apply independently of the code license below: even
+   where source is made available, the hosted Site, its brand, and the Data
+   remain the Author's and may not be rehosted.
+
+
+3. RIGHTS RESERVED
+
+   - Copyright in the Site, its code, its design, and the Data compilation is
+     owned by the Author and protected by copyright law.
+   - The Data compilation is additionally protected as a database under the
+     EU/EEA sui generis database right (Directive 96/9/EC): substantial
+     extraction or re-utilisation is prohibited.
+   - "Travelia", the Travelia name and logo are trademarks of the Author.
+     Using them for a copied or competing service is prohibited.
+
+
+4. THIRD-PARTY SOURCES & ATTRIBUTION
+
+   Travelia is built on open data and open services, and gratefully credits
+   them. These upstream sources carry their OWN licenses, which govern the
+   underlying facts (not this compilation) and which Travelia complies with:
+
+   - Destination backbone and geography from GeoNames (CC BY) and coastlines
+     from Natural Earth (public domain).
+   - Climate normals (temperature, precipitation, solar) from WorldClim
+     (CC BY 4.0); sea-surface temperature from the NOAA OISST monthly
+     climatology (public domain).
+   - Safety signal combined from US State Department travel advisories and UK
+     FCDO foreign travel advice (Crown copyright / Open Government Licence),
+     with World Bank intentional-homicide rates (CC BY 4.0).
+   - Map basemap © CARTO, © OpenStreetMap contributors.
+   - Built-heritage density derived from OpenStreetMap via Overpass — © OSM
+     contributors, Open Database License (ODbL); the derived layer is shared
+     under ODbL's terms.
+   - Cultural / place data from Wikidata (CC0) and Wikipedia.
+   - Live weather & UV/sunset from Open-Meteo; FX from frankfurter.dev;
+     public holidays from date.nager.at.
+   - Monsoon wind-flow field from the NCEP/NCAR Reanalysis 1 monthly
+     climatology (NOAA/PSL, public domain); tropical-cyclone seasonality
+     tabulated from IBTrACS (NOAA, public domain).
+   - Destination photos hotlinked from Wikimedia Commons, Unsplash, and
+     Pexels under their respective terms; credited in-app.
+
+   Nothing here claims ownership of those upstream facts. Section 2 concerns
+   Travelia's own compilation, code, design, and brand.
+
+
+5. NO WARRANTY
+
+   The Site and Data are provided "AS IS", without warranty of any kind.
+   Prices, advisories, weather, and all figures are estimates for comparison
+   only, are not offers, and may be wrong or out of date. The Author is not
+   liable for any loss arising from use of the Site.
+
+
+6. CODE LICENSE
+
+   Where the Author publishes Travelia source code, it is licensed under the
+   PolyForm Noncommercial License 1.0.0
+   (https://polyformproject.org/licenses/noncommercial/1.0.0/): free for
+   noncommercial use, no commercial use or commercial hosting. This does not
+   grant any right to rehost the Site or reuse the Data (Sections 2–3).
+
+
+7. PERMISSIONS & TAKEDOWNS
+
+   For licensing, commercial use, or any permission request, contact the
+   Author. Infringing copies will be pursued via DMCA / hosting-provider and
+   ad-network takedown and, where applicable, database-right and trademark
+   enforcement.
+
+   Contact: mr.pavel.horak@gmail.com

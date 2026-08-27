@@ -1,0 +1,353 @@
+{
+  "version": 2,
+  "_comment": "Travelia Score — tunable knobs (edit + redeploy, no data re-bake). Score = 100 * Safety * Fit^wFit * Value^wValue * Reach^wReach. See docs/SCORING.md.",
+  "_sliders_doc": "MIDDLE-IS-OFF: each slider is a 0..4 notch, centre (2) = off (no weight/no filter). tune() in score.ts reads the per-notch arrays below at the traveller's notch. Budget is SPEND LEVEL (not luxury): the shoestring half favours cheaper places (Value weight); the generous half just turns the price penalty off, so pricier adventures aren't down-ranked — it never implies 5-star. Travel time is gently ON at centre (wReach 0.15) so Home always tilts the map toward reachable places — the north star is value from a real home town, and the map otherwise has no distance signal (Value scores from country price, not the all-in cost). Reach decays by door-to-door HOURS (a flight-time model in score.ts). Slide toward 'far ok' (notch 3-4) to turn it fully off for global dream trips. Temp & Safety are two-sided. Profiles are named notch presets; moving any slider switches to Custom.",
+  "weights": {
+    "fit": 1.0,
+    "quality": 0.5
+  },
+  "hideBelow": 12,
+  "value": {
+    "floor": 0.05
+  },
+  "comfort": {
+    "dryRainMm": 200,
+    "mugLo": 16,
+    "mugHi": 24
+  },
+  "_fresh_doc": "Mugginess is a PENALTY on comfort, not a component of it: `mug` is the share of a trip's comfort that a fully oppressive month costs. It reads the monthly mean dew point (index.arrow `dewp`, pipeline/humid_bake.py), which falls from no penalty at or below comfort.mugLo to the full one at or above mugHi — the standard dew-point comfort scale (16 °C noticeable, 18 sticky, 21 uncomfortable, 24 oppressive). Dew point rather than relative humidity because RH means nothing without a temperature and would double-count `warm`; dew point is bounded by air temperature, so the term is silent in winter by construction. A penalty rather than a sixth comfort sub-score because a weighted mean pulls both ways: as a component, dry air scored a full mark and lifted a freezing Prague January on the city map from 32 to 42 for the sole merit of not being humid. Weighted heaviest for hiking/city/culture (a full day on your feet, no water to get into), light for beach (sea breeze, swimming — and the tropics are chosen knowingly), and absent for diving (underwater) and ski (a sub-zero dew point cannot be muggy).",
+  "_tripQuality_doc": "Experience trips rank by a continuous 0..1 quality column (index_quality.arrow) instead of a binary tag filter — so no place is ever wrongly invisible (Karlovy Vary on the culture map). Physical trips (beach/ski/diving) are absent here: they keep their real geo+climate gate, and take their quality (if any) from physicalQuality below — quality = 1 only where no sweep exists.",
+  "tripQuality": {
+    "culture": "culture",
+    "city": "urban",
+    "nightlife": "nightlife",
+    "nature": "nature",
+    "hiking": "nature",
+    "attractions": "attractions"
+  },
+  "_physicalQuality_doc": "Quality columns for PHYSICAL trips — applied on top of their hard geo+climate+tag gate (which stays; unlike tripQuality this never turns the gate off). beach = OSM beach/resort density (beach_quality.py), a bonus-only 0.55..1.0 floor so unmapped coasts are un-boosted, never tanked — it separates a resort coast from an iron-ore port with identical warm/dry/coastal signals. ski = OSM lift/piste density (ski_quality.py), floored LOWER at 0.45..1.0 because a chairlift is capital infrastructure mappers reliably add, so its absence is real evidence you cannot ski there — where an unmapped beach still exists. diving = OSM reef + dive-operator density (diving_quality.py), floored at 0.50 (between the two) because the evidence is mixed — a reef exists unmapped, but a dive centre is capital mappers do add — and underwater mapping is the thinnest of the three; it separates a real dive coast from any merely warm sea, which is all the 18-24 C gate tests.",
+  "physicalQuality": {
+    "beach": "beach",
+    "ski": "ski",
+    "diving": "diving"
+  },
+  "_terrain_doc": "A RESIDUAL nudge, no longer the main event. This was a 0.7/0.6 stopgap for a 'nature' column that knew nothing about parks, and it ramped the destination's OWN point elevation — so it rescued places that sit high while still reading every valley gateway town as flat. Measured 2026-08-24: Innsbruck/Interlaken/Berchtesgaden scored 27 against a global median of 29, and Munich outranked all three on the hiking map — the very bug this was added to fix. The proper fix it called for is now built: park_quality.py (protected-area proximity, all 234k) and relief_bake.py (highest peak within 25 km MINUS the town's elevation) are baked INTO the nature column by quality.py, where relief is measured rather than inferred from altitude. Keeping a small weight here is deliberate: high ground is mild evidence of terrain in its own right, and the residual keeps the blend alive so a future re-tune has somewhere to go. Do not raise it back — at 0.7 it double-counts relief and re-inverts valleyBase vs highPlateau in check-score.mjs.",
+  "terrain": {
+    "trips": {
+      "hiking": 0.2,
+      "nature": 0.15
+    },
+    "elevLo": 400,
+    "elevHi": 2200
+  },
+  "sliders": {
+    "budget": {
+      "label": "Budget",
+      "ends": [
+        "shoestring",
+        "generous"
+      ],
+      "wValue": [
+        0.4,
+        0.2,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "gamma": [
+        1.0,
+        0.9,
+        0.8,
+        0.8,
+        0.8
+      ]
+    },
+    "distance": {
+      "label": "Travel time",
+      "ends": [
+        "quick",
+        "far ok"
+      ],
+      "wReach": [
+        0.45,
+        0.28,
+        0.15,
+        0.0,
+        0.0
+      ],
+      "decayHr": [
+        4,
+        7,
+        9,
+        200,
+        200
+      ]
+    },
+    "temp": {
+      "label": "Temperature",
+      "ends": [
+        "mild",
+        "extreme"
+      ],
+      "warmSpan": [
+        4,
+        6,
+        8,
+        12,
+        16
+      ]
+    },
+    "fun": {
+      "label": "Vibe",
+      "ends": [
+        "laid-back",
+        "lively"
+      ],
+      "funLive": [
+        0.0,
+        0.0,
+        0.0,
+        0.3,
+        0.6
+      ],
+      "funQuiet": [
+        0.6,
+        0.3,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "safety": {
+      "label": "Safety",
+      "ends": [
+        "adventurous",
+        "only safe"
+      ],
+      "divisor": [
+        12,
+        10,
+        8,
+        6,
+        4
+      ],
+      "floor": [
+        0.4,
+        0.35,
+        0.3,
+        0.15,
+        0.0
+      ],
+      "hideAdvisory": [
+        99,
+        99,
+        4,
+        3,
+        2
+      ],
+      "salExp": [
+        0.0,
+        0.08,
+        0.15,
+        0.15,
+        0.15
+      ]
+    }
+  },
+  "profiles": {
+    "easygoing": {
+      "label": "Easygoing (first-timer / elderly)",
+      "notch": {
+        "budget": 2,
+        "distance": 1,
+        "temp": 0,
+        "safety": 3
+      }
+    },
+    "couple": {
+      "label": "Couple / balanced",
+      "default": true,
+      "notch": {
+        "budget": 2,
+        "distance": 2,
+        "temp": 2,
+        "safety": 2
+      }
+    },
+    "adventure": {
+      "label": "Adventure",
+      "notch": {
+        "budget": 1,
+        "distance": 2,
+        "temp": 3,
+        "safety": 0
+      }
+    }
+  },
+  "trips": {
+    "beach": {
+      "gate": {
+        "kind": "soft",
+        "air": [
+          12,
+          20
+        ],
+        "rainKill": 260
+      },
+      "comfort": {
+        "warm": 0.45,
+        "sun": 0.3,
+        "sea": 0.25
+      },
+      "mug": 0.1,
+      "ideal": [
+        24,
+        31
+      ],
+      "sea": [
+        15,
+        27
+      ]
+    },
+    "diving": {
+      "gate": {
+        "kind": "sea",
+        "sea": [
+          18,
+          24
+        ]
+      },
+      "comfort": {
+        "sea": 0.5,
+        "warm": 0.2,
+        "sun": 0.3
+      },
+      "ideal": [
+        26,
+        32
+      ],
+      "sea": [
+        22,
+        30
+      ]
+    },
+    "ski": {
+      "gate": {
+        "kind": "snow",
+        "snow": [
+          0.18,
+          0.45
+        ]
+      },
+      "comfort": {
+        "snow": 0.6,
+        "sun": 0.4
+      },
+      "ideal": [
+        -6,
+        2
+      ]
+    },
+    "hiking": {
+      "gate": {
+        "kind": "temperate",
+        "hot": 32,
+        "cold": -5,
+        "rainKill": 400
+      },
+      "comfort": {
+        "warm": 0.6,
+        "dry": 0.2,
+        "sun": 0.2
+      },
+      "mug": 0.25,
+      "ideal": [
+        11,
+        22
+      ]
+    },
+    "nature": {
+      "gate": {
+        "kind": "temperate",
+        "hot": 34,
+        "cold": -8,
+        "rainKill": 420
+      },
+      "comfort": {
+        "warm": 0.55,
+        "dry": 0.25,
+        "sun": 0.2
+      },
+      "mug": 0.15,
+      "ideal": [
+        12,
+        24
+      ]
+    },
+    "city": {
+      "gate": {
+        "kind": "none"
+      },
+      "comfort": {
+        "warm": 0.6,
+        "dry": 0.4
+      },
+      "mug": 0.2,
+      "ideal": [
+        12,
+        24
+      ]
+    },
+    "culture": {
+      "gate": {
+        "kind": "none"
+      },
+      "comfort": {
+        "warm": 0.6,
+        "dry": 0.4
+      },
+      "mug": 0.2,
+      "ideal": [
+        12,
+        24
+      ]
+    },
+    "attractions": {
+      "_doc": "Theme parks & attractions — the WHAT, never the WHO (see attractions_quality.py: `family` is already a WHO_PAX value AND an unrelated tagbit). Gate is `temperate`, not `none` like city/culture, because queueing outdoors in 36 C with children is the entire failure mode — and it is what makes the lens useful: Orlando in April really should beat Orlando in August. rainKill is tighter than hiking's 400 since most of the estate is open-air, and mug matches hiking (a full day on your feet, no water to get into).",
+      "gate": {
+        "kind": "temperate",
+        "hot": 33,
+        "cold": -2,
+        "rainKill": 300
+      },
+      "comfort": {
+        "warm": 0.5,
+        "dry": 0.3,
+        "sun": 0.2
+      },
+      "mug": 0.25,
+      "ideal": [
+        16,
+        27
+      ]
+    },
+    "nightlife": {
+      "gate": {
+        "kind": "none"
+      },
+      "comfort": {
+        "warm": 0.5,
+        "dry": 0.3,
+        "sun": 0.2
+      },
+      "mug": 0.1,
+      "ideal": [
+        16,
+        28
+      ]
+    }
+  },
+  "coast": {
+    "decayKm": 50
+  }
+}

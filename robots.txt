@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+# The map's live-state query URLs (/?trip=…&place=…) are the interactive tool, not content — keep
+# them out of the index so they never compete with the clean, crawlable pages (#17 §3). Crawlers
+# still reach every real page (paths aren't disallowed).
+Disallow: /*?
+
+Sitemap: https://travelia.net/sitemap-index.xml
