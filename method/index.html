@@ -1,0 +1,111 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>How Travelia works — and four things it got wrong | Travelia</title><meta name="description" content="How 234,000 destinations get scored on climate, safety, value and reach — and four measured mistakes we found doing it: park counts that ranked Frankfurt above Jasper, 42% of “destinations” that were city districts, beach data that rated an iron-ore port, and an 18 km climate grid that put Zermatt at 3 °C in June."><link rel="canonical" href="https://travelia.net/method/"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"><meta property="og:type" content="article"><meta property="og:site_name" content="Travelia"><meta property="og:title" content="How Travelia works — and four things it got wrong | Travelia"><meta property="og:description" content="How 234,000 destinations get scored on climate, safety, value and reach — and four measured mistakes we found doing it: park counts that ranked Frankfurt above Jasper, 42% of “destinations” that were city districts, beach data that rated an iron-ore port, and an 18 km climate grid that put Zermatt at 3 °C in June."><meta property="og:url" content="https://travelia.net/method/"><meta property="og:image" content="https://travelia.net/og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Travelia's world heatmap of holiday value"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://travelia.net/og.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"How Travelia works — and four things it got wrong","description":"How 234,000 destinations get scored on climate, safety, value and reach — and four measured mistakes we found doing it: park counts that ranked Frankfurt above Jasper, 42% of “destinations” that were city districts, beach data that rated an iron-ore port, and an 18 km climate grid that put Zermatt at 3 °C in June.","url":"https://travelia.net/method/","author":{"@type":"Person","name":"Pavel Horak"},"publisher":{"@type":"Person","name":"Pavel Horak"},"inLanguage":"en"}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Travelia","item":"https://travelia.net/"},{"@type":"ListItem","position":2,"name":"How it works","item":"https://travelia.net/method/"}]}</script><!-- resolve the app's theme before first paint (no flash). Same contract as index.astro:
+         theme = system|dark|light in localStorage, stamped as <html data-theme>. So a reader who
+         picked light/dark on the map sees these content pages in that same mode. --><script>
+      (function () {
+        var m = localStorage.getItem("theme") || "system";
+        var light = m === "light" || (m === "system" && matchMedia("(prefers-color-scheme: light)").matches);
+        document.documentElement.dataset.theme = light ? "light" : "dark";
+      })();
+    </script><!-- is:global — these pages compose Shell + a slotted child page; scoped styles would carry
+         Shell's cid and NEVER match the child's slotted markup (.cta/.chip/table live in the child),
+         leaving them unstyled. Global is correct here: content pages don't share the map app's CSS. --><style>.wrap[data-astro-cid-ft4ngeyl]{max-width:46rem;margin:0 auto;padding:2.5rem 1.25rem 4rem;line-height:1.65}h1[data-astro-cid-ft4ngeyl]{font-size:2rem;margin:0 0 .75rem;line-height:1.2}h2[data-astro-cid-ft4ngeyl]{font-size:1.2rem;margin:2.2rem 0 .5rem}.lede[data-astro-cid-ft4ngeyl]{font-size:1.05rem}p[data-astro-cid-ft4ngeyl]{margin:.8rem 0}ul[data-astro-cid-ft4ngeyl]{padding-left:1.1rem}li[data-astro-cid-ft4ngeyl]{margin:.4rem 0}code[data-astro-cid-ft4ngeyl]{font-size:.9em;opacity:.85;word-break:break-word}strong[data-astro-cid-ft4ngeyl]{font-weight:600}.back[data-astro-cid-ft4ngeyl]{margin-top:2.5rem}
+:root,:root[data-theme=dark]{--bg:#0b0e14;--panel:#121826;--panel2:#0e1420;--line:rgba(120,140,170,.18);--ink:#eef3fb;--muted:#93a0b6;--accent:#34d399;--accent2:#38bdf8;--cta-ink:#04160f}:root[data-theme=light]{--bg:#eef1f6;--panel:#ffffff;--panel2:#f4f6fa;--line:rgba(40,60,90,.14);--ink:#141a24;--muted:#5b6678;--accent:#0ea371;--accent2:#0a8fd0;--cta-ink:#ffffff}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Roboto Condensed,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;-webkit-font-smoothing:antialiased}a{color:var(--accent)}.wrap{max-width:820px;margin:0 auto;padding:22px 20px 64px}header.site{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}header.site a.brand{font-size:22px;font-weight:800;color:var(--ink);text-decoration:none;letter-spacing:.5px}header.site a.brand span{color:var(--accent)}header.site a:last-child{font-size:14px;color:var(--muted);text-decoration:none;white-space:nowrap}header.site a:last-child:hover{color:var(--accent)}nav.crumbs{font-size:13px;color:var(--muted);margin:2px 0 20px}nav.crumbs a{color:var(--muted);text-decoration:none}nav.crumbs a:hover{color:var(--ink)}nav.crumbs span.sep{opacity:.5;padding:0 6px}h1{font-size:clamp(26px,7vw,34px);line-height:1.12;margin:.1em 0 .2em;letter-spacing:-.01em}.sub{color:var(--muted);margin:0 0 18px;font-size:16px;max-width:60ch}.sub b{color:var(--ink)}.cta{display:inline-block;margin:6px 0 26px;padding:12px 20px;border-radius:11px;background:var(--accent);color:var(--cta-ink);font-weight:700;text-decoration:none;box-shadow:0 6px 20px color-mix(in srgb,var(--accent) 35%,transparent);transition:transform .12s,box-shadow .12s}.cta:hover{transform:translateY(-1px);box-shadow:0 9px 26px color-mix(in srgb,var(--accent) 45%,transparent)}.cta.ghost{background:transparent;color:var(--accent);border:1px solid var(--line);box-shadow:none}section{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:16px 18px;margin:16px 0;box-shadow:0 1px 2px #0000000a}h2{font-size:12.5px;margin:0 0 12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:700}section:has(>table){overflow-x:auto;-webkit-overflow-scrolling:touch}table{width:100%;border-collapse:collapse;font-size:13.5px}th,td{padding:8px 6px;text-align:center;border-bottom:1px solid var(--line);white-space:nowrap}tr:last-child td{border-bottom:none}th{color:var(--muted);font-weight:600;font-size:11.5px;text-transform:uppercase;letter-spacing:.03em}td:first-child,th:first-child{text-align:left}tbody tr:hover td,table tr:hover td{background:color-mix(in srgb,var(--accent) 7%,transparent)}.rank{color:var(--muted);width:2ch;font-variant-numeric:tabular-nums}.rank td,td.name{text-align:left}td.name{white-space:normal}td.name a{color:var(--ink);text-decoration:none;font-weight:600}td.name a:hover{color:var(--accent)}.idx{font-weight:800;color:var(--accent);font-variant-numeric:tabular-nums}.chips{display:flex;flex-wrap:wrap;gap:8px}.chip{background:var(--panel2);border:1px solid var(--line);border-radius:999px;padding:7px 14px;font-size:13.5px;text-decoration:none;color:var(--ink);transition:border-color .12s,color .12s}.chip:hover{border-color:var(--accent);color:var(--accent)}.chip.on{background:var(--accent);color:var(--cta-ink);border-color:var(--accent);font-weight:700}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}.tilelink{display:block;background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:12px 13px;text-decoration:none;color:var(--ink);transition:border-color .12s}.tilelink:hover{border-color:var(--accent)}.tilelink b{display:block;font-size:15px}.tilelink span{color:var(--muted);font-size:12px}footer{color:var(--muted);font-size:13px;margin-top:34px;border-top:1px solid var(--line);padding-top:16px}footer a{color:var(--accent)}svg text{fill:var(--muted);font-size:10px}@media(max-width:560px){section{padding:14px}th,td{padding:7px 5px}}
+</style></head> <body> <div class="wrap"> <header class="site"> <a class="brand" href="/">Travel<span>ia</span></a> <a href="/">← the value map</a> </header> <nav class="crumbs" aria-label="Breadcrumb"> <a href="/">Travelia</a> <span class="sep">/</span><a href="/method/">How it works</a> </nav>  <main class="wrap" data-astro-cid-ft4ngeyl> <h1 data-astro-cid-ft4ngeyl>How Travelia works — and four things it got wrong</h1> <p class="lede" data-astro-cid-ft4ngeyl>
+Travelia scores about 234,000 places on whether a particular trip, in a particular month, from
+      a particular home town, is a good idea — and what it would cost all-in. It has no backend: the
+      whole index is precomputed and the scoring runs in your browser.
+</p> <p data-astro-cid-ft4ngeyl>
+That much is easy to say. The interesting part is that building it produced four mistakes that
+      all had the same shape, and none of them looked like a bug from the outside. Each one produced
+      a confident, plausible, wrong answer. They are worth writing down because the shape recurs.
+</p> <h2 data-astro-cid-ft4ngeyl>The score, briefly</h2> <p data-astro-cid-ft4ngeyl>
+Each destination gets <code data-astro-cid-ft4ngeyl>Safety × Fit^wFit × Value^wValue × Reach^wReach × Salience^wSal ×
+      Quality^wQ</code>. <strong data-astro-cid-ft4ngeyl>Fit</strong> is climate against what the trip actually wants.
+<strong data-astro-cid-ft4ngeyl>Reach</strong> is door-to-door travel time from your home town. <strong data-astro-cid-ft4ngeyl>Quality</strong>
+is trip-specific and measured, not editorial — beach and resort density, ski-lift capital, dive
+      operators, protected-area proximity, built heritage. The exponents come from five preference
+      sliders, so the answer is yours, not a published league table.
+</p> <h2 data-astro-cid-ft4ngeyl>1. Counting national parks ranked Frankfurt above Jasper</h2> <p data-astro-cid-ft4ngeyl>
+The obvious way to score "is there nature here" is to count protected areas nearby. Within
+      40 km, <strong data-astro-cid-ft4ngeyl>Frankfurt has 203 of them</strong> and <strong data-astro-cid-ft4ngeyl>Jasper has 5</strong>. Frankfurt's
+      are all 0.1–3 km²; one of Jasper's is Jasper National Park, at 3,764 km².
+</p> <p data-astro-cid-ft4ngeyl>
+Protected-area <em data-astro-cid-ft4ngeyl>count</em> is a proxy for urban mapping density. Weighting by
+<code data-astro-cid-ft4ngeyl>protection × √area</code> and dropping everything under 10 km² fixes it. The lesson —
+      which we then failed to apply three more times — is that an open-data count usually measures
+      how thoroughly a place has been surveyed, not how much of the thing is there.
+</p> <h2 data-astro-cid-ft4ngeyl>2. Forty-two percent of "destinations" were city districts</h2> <p data-astro-cid-ft4ngeyl>
+GeoNames marks a city district as <code data-astro-cid-ft4ngeyl>PPLX</code>, and the ingest was throwing that field
+      away. So Pest, Eixample, Monte-Carlo, "Downtown Dubai" and "Sydney Central Business District"
+      were all competing as destinations in their own right — and <em data-astro-cid-ft4ngeyl>winning</em>, because every
+      quality signal is a density-in-a-radius measure and a radius centred on a district captures the
+      whole city's cluster.
+</p> <p data-astro-cid-ft4ngeyl>
+The <code data-astro-cid-ft4ngeyl>attractions</code> top fifteen was, at one point, fifteen city districts. The live
+      site answered <strong data-astro-cid-ft4ngeyl>Monte-Carlo as the world's best June hiking destination</strong>.
+</p> <p data-astro-cid-ft4ngeyl>
+Two things about the fix were counter-intuitive. Matching on shared administrative codes — the
+      natural approach — fails on exactly the cases it targets: Mexico City's admin2 code is empty
+      while its boroughs have their own, so requiring a match discards every borough while appearing
+      to work. And blocking promotion isn't enough, because tier is assigned from population: a
+      504,000-person Shanghai district qualifies on its own and was never "promoted" at all.
+</p> <h2 data-astro-cid-ft4ngeyl>3. The beach data rated an iron-ore port at 96 out of 100</h2> <p data-astro-cid-ft4ngeyl>
+Port Hedland, Western Australia, is an iron-ore export terminal. It scored 96; Hurghada scored
+      98. Two things were wrong, and the second is the one that mattered.
+</p> <p data-astro-cid-ft4ngeyl>
+The density term was linear and saturated at about thirteen mapped beach features, so the top
+      of the range separated nothing — Hurghada's weighted sum is 154 and Port Hedland's is 36, and
+      both read as a perfect 1.0.
+</p> <p data-astro-cid-ft4ngeyl>
+But fixing that alone would not have worked, because <strong data-astro-cid-ft4ngeyl>Port Hedland's 36 is higher than
+      Sharm el-Sheikh's 35</strong>. Mapped beach features measure OpenStreetMap coverage;
+<code data-astro-cid-ft4ngeyl>natural=beach</code> records that sand exists, and an industrial coastline has sand. What
+      actually separates them is whether anyone can stay there, and accommodation density does it
+      with no overlap at all: Gladstone 0.0, Dampier 0.0, Port Hedland 2.4 — against Makadi Bay 23.6,
+      Hurghada 49.4, Sharm 72.4.
+</p> <h2 data-astro-cid-ft4ngeyl>4. The climate grid said Zermatt was 3 °C in June</h2> <p data-astro-cid-ft4ngeyl>
+This one was invisible for months because it never looked like a data problem — it looked like
+      a ranking problem. The Alps were simply absent from hiking and nature results, and every
+      attempt to fix the <em data-astro-cid-ft4ngeyl>lens</em> improved things slightly without fixing it.
+</p> <p data-astro-cid-ft4ngeyl>
+Decomposing a single score finally showed it. For hiking in June from Prague, Zermatt's quality
+      was fine (0.75 against Flagstaff's 0.92) and its reach strongly favoured it (0.62 against 0.18).
+      Its <strong data-astro-cid-ft4ngeyl>climate fit was 0.27</strong>. The index believed Zermatt's June mean temperature
+      was 3 °C. It is about 10.5 °C.
+</p> <p data-astro-cid-ft4ngeyl>
+The climate normals were WorldClim at 10 arc-minutes — roughly 18 km per cell. In mountains one
+      cell averages the valley floors with the peaks around them, so a town in a deep valley is
+      handed the climate of terrain a kilometre above it. Correcting each place by the lapse rate
+      over the difference between the grid cell's mean elevation and the town's own moved Zermatt
+      from rank <strong data-astro-cid-ft4ngeyl>#3,261 to #34</strong>. Temperatures now come from the 2.5-arc-minute grid
+      (~4.6 km) with the same correction applied on top, which brings Chamonix, Interlaken and
+      Innsbruck to within a degree of their published normals and Zermatt to 10 °C against a real
+      10.5 °C.
+</p> <p data-astro-cid-ft4ngeyl>
+What makes that correction trustworthy is where it does nothing. It moves Prague by +0.4 °C and
+      Flagstaff — at 2,104 m, but on a broad plateau — by +0.8 °C. Elevation was never the predictor;
+<em data-astro-cid-ft4ngeyl>local relief</em> is. Three quarters of all destinations move by less than half a degree.
+</p> <p data-astro-cid-ft4ngeyl>
+Fixing it immediately broke something else, which is the most honest part of the story. Making
+      mountain villages accurately mild knocked Kitzbühel, Chamonix and Engelberg off the ski map
+      entirely — the snow gate tested the village, and Kitzbühel's village really is around freezing
+      in February. Its slopes are not. The gate now lifts the climate up the local relief to where
+      the lifts are. Edmonton, a flat and genuinely cold prairie city, fell from 14th to 233rd.
+</p> <h2 data-astro-cid-ft4ngeyl>What this should tell you about the numbers</h2> <p data-astro-cid-ft4ngeyl>
+Every one of those four was an open-data signal that measured <em data-astro-cid-ft4ngeyl>how well something had been
+      surveyed</em> rather than how much of it was there — and each produced an answer that looked
+      entirely reasonable until someone checked a place they knew.
+</p> <p data-astro-cid-ft4ngeyl>
+So: the climate, prices and travel times here are worth citing, and they are stated with their
+      own error bars — the price model runs about 20% median absolute error, and it says so on every
+      card. The <em data-astro-cid-ft4ngeyl>ranking</em> is not a published fact and never will be: it is computed in your
+      browser from your home town and your preferences, and two people opening the same link can
+      legitimately see a different order. Known limitations are listed in
+<a href="/llms.txt" data-astro-cid-ft4ngeyl>llms.txt</a>, including the ones still unfixed.
+</p> <h2 data-astro-cid-ft4ngeyl>Try it</h2> <p data-astro-cid-ft4ngeyl>
+Every view is a URL, so any answer here is shareable and restores exactly:
+</p> <ul data-astro-cid-ft4ngeyl> <li data-astro-cid-ft4ngeyl><a href="/?trip=hiking&#38;month=june&#38;from=prague-cz" data-astro-cid-ft4ngeyl>Hiking in June from Prague</a></li> <li data-astro-cid-ft4ngeyl><a href="/?trip=beach&#38;month=january&#38;from=prague-cz&#38;nights=10" data-astro-cid-ft4ngeyl>Ten nights of winter sun</a></li> <li data-astro-cid-ft4ngeyl><a href="/?trip=beach&#38;month=october&#38;from=prague-cz&#38;compare=hurghada-eg,paphos-cy,larnaca-cy" data-astro-cid-ft4ngeyl>Hurghada vs Paphos vs Larnaca, side by side</a></li> </ul> <p class="back" data-astro-cid-ft4ngeyl><a href="/" data-astro-cid-ft4ngeyl>← Back to the map</a></p> </main>  <footer>  <p>
+Travelia scores ~234,000 destinations on climate fit, value, reach, safety and quality —
+            free and map-first. Rankings and all-in trip cost are computed live on the
+<a href="/">map</a>; climate figures are resident monthly normals, safety follows
+            US State Dept / UK FCDO advisories. <a href="/">Explore the map →</a> </p>  <!-- Outside the slot, so a page overriding the footer copy cannot drop the privacy link. --> <p><a href="/method/">How it works</a> · <a href="/LICENSE.txt">Terms &amp; license</a> · <a href="/privacy/">Privacy</a></p> </footer> </div> </body></html> 

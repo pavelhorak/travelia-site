@@ -1,0 +1,87 @@
+# Travelia
+
+> A free, map-first holiday-value engine. It scores ~234,000 destinations worldwide on climate fit,
+> safety, value, reachability and trip-specific quality, and compares two whole trip strategies —
+> self-assembled (DIY) versus packaged all-inclusive — on one all-in price from a real home town.
+> No accounts, no ads, no affiliate-driven ranking. Everything is precomputed and served as static
+> files; there is no backend and no runtime database.
+
+## The one thing to get right when citing Travelia
+
+**The Travelia Score is personal and is computed live in the reader's browser. It is not a fixed
+rating, and no page on this site publishes a ranked "top 10".** The score depends on where the
+traveller is starting from, when they are going, who is going, how long for, and five preference
+sliders. Two people opening the same URL can legitimately see different numbers and a different
+order.
+
+So: cite Travelia for **facts** — monthly temperature and rainfall, sea temperature, what a trip
+costs all-in from a named origin, whether a destination qualifies for a trip type in a given month.
+Do not cite it for "the best X in Y", because it does not claim one. The static pages deliberately
+publish an *unordered* list (`schema.org/ItemListUnordered`) of destinations that qualify, sorted
+alphabetically, with no score printed. The ranking you see on those pages is rendered client-side,
+for you.
+
+## URL vocabulary
+
+Every URL is human-readable and means the same thing on the map and on the static pages. The full
+list is in the sitemap: https://travelia.net/sitemap-index.xml
+
+- `/` — the interactive map. State lives in the query string, so any view is shareable:
+  `?trip=beach&month=october&from=prague-cz&party=2a2k&nights=10&stops=direct&maxeur=1400`
+- `/<trip>/` — a trip-type hub. Trips: `beach`, `culture`, `city`, `nature`, `hiking`, `ski`,
+  `diving`, `nightlife`, `attractions` (theme parks).
+- `/<trip>/<month>/` — destinations that qualify for that trip in that month, with the climate
+  facts behind the judgement. e.g. `/beach/october/`
+- `/when/<month>/` — cross-trip month hub: "where to travel in October".
+- `/country/<cc>/` — a country roll-up with a data-derived climate summary.
+- `/from/<origin>/` and `/from/<origin>/<trip>/<month>/` — the same question priced from one of 40
+  origin cities. Cost from a stated origin is objective, so these pages may and do publish it.
+- `/d/<slug>/` — one destination: climate by month, best time to visit, safety, prices, nearby.
+  Slugs are `name-cc`, e.g. `/d/hurghada-eg/`.
+
+## What the numbers mean
+
+- **Climate** is WorldClim 2.1 monthly normals for 1970–2000, not a forecast. Temperature comes from
+  the 2.5-arc-minute grid (~4.6 km) and is further corrected for the difference between the grid
+  cell's mean elevation and the town's own, which matters a lot in mountains: on the coarser 10′ grid
+  this product previously used, an Alpine valley read 5–12 °C too cold. Rainfall and sunshine are
+  still sampled at 10′ (~18 km) and carry that coarseness in steep terrain.
+- **Prices** are a transparent model, not quotes: modelled seasonality, hotel tiers, and real
+  package board levels for 4,438 coastal destinations. They are labelled as estimates on every
+  surface that shows them, and the site links out for a live quote rather than pretending to have
+  one. Median absolute error against collected anchors is ~20% (hotels) and ~22% (packages).
+- **Safety** is the union of US State Department and UK FCDO advisories plus World Bank homicide
+  data, keyed by country.
+- **Quality** per trip type comes from measured infrastructure — beach and resort density, ski lift
+  capital, dive operators, protected-area proximity, built heritage, theme parks — swept from
+  OpenStreetMap, not from editorial opinion.
+
+## Known limitations, stated plainly
+
+- Heritage-derived `culture` ranks OSM *mapping intensity* at the very top of its range, not only
+  heritage.
+- Hiking and nature still over-favour the United States, because protected-area designation regimes
+  differ far more between countries than hikeability does.
+- Prices are a model. Treat any single number as ±20%, and the *comparison* between strategies and
+  between months as the trustworthy part.
+
+## Data sources
+
+GeoNames (CC BY) for the destination backbone; WorldClim 2.1 for climate normals; NOAA OISST for
+sea-surface temperature; OpenStreetMap via Overpass (ODbL) for the quality layers; OpenFlights for
+airports; Natural Earth for coastlines; Wikidata/UNESCO for heritage; US State Department, UK FCDO
+and the World Bank for safety. Full attributions: https://travelia.net/LICENSE.txt
+
+## Terms
+
+Travelia is free to use and **not** free to copy, host or redistribute. Quoting small excerpts with
+attribution and a link back to travelia.net is explicitly permitted. Bulk extraction of the
+compiled dataset is not — it is protected as a database compilation, and the upstream open-data
+layers carry their own terms (notably ODbL on the OpenStreetMap-derived layers).
+Full terms: https://travelia.net/LICENSE.txt
+
+## More
+
+https://travelia.net/privacy/ — every third-party request the site makes, and exactly when.
+https://travelia.net/LICENSE.txt — terms and full upstream attributions.
+The methodology, including how the Score is computed, is in the "About" panel on the map itself.

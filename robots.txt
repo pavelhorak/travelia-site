@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+# The map's live-state query URLs (/?trip=…&place=…) are the interactive tool, not content — keep
+# them out of the index so they never compete with the clean, crawlable pages (#17 §3). Crawlers
+# still reach every real page (paths aren't disallowed).
+Disallow: /*?
+
+Sitemap: https://travelia.net/sitemap-index.xml
+
+# What this site is, what its URLs mean, and — the part that is easy to get wrong — that the
+# Travelia Score is computed per reader and is never published as a fixed ranking (gh #51).
+# https://llmstxt.org/
+LLM: https://travelia.net/llms.txt
